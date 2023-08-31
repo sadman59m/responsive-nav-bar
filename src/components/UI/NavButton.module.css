@@ -1,0 +1,16 @@
+button.nav-btn {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+button.nav-btn:hover {
+  color: orange;
+}
