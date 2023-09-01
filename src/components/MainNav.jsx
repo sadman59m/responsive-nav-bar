@@ -16,7 +16,7 @@ const MainNav = () => {
   return (
     <>
       <header className={navShowClass}>
-        <h3>Logo</h3>
+        <h3>MyCryptos</h3>
         <nav>
           <a href="https://academy.vivasoftltd.com/javascript-bootcamp">
             Javascript Bootcamp

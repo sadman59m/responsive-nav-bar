@@ -2,20 +2,34 @@
 /* eslint-disable no-unused-vars */
 import classes from "./Pagination.module.css";
 
-const Pagination = ({ totalItems, currentPage, itemPerPage }) => {
+const Pagination = ({
+  totalItems,
+  currentPage,
+  itemPerPage,
+  setCurrentPage,
+}) => {
   const pages = [];
 
   for (let i = 1; i <= Math.ceil(totalItems / itemPerPage); ++i) {
     pages.push(i);
   }
 
-  console.log(pages);
+  const setCurrentPageHandler = (page) => {
+    setCurrentPage(page);
+  };
 
   return (
     <div className={classes.pagination}>
       {pages.map((page, index) => {
-        console.log(page);
-        return <button key={index}>{page}</button>;
+        return (
+          <button
+            key={index}
+            className={page === currentPage ? classes.active : ""}
+            onClick={setCurrentPageHandler.bind(null, page)}
+          >
+            {page}
+          </button>
+        );
       })}
     </div>
   );

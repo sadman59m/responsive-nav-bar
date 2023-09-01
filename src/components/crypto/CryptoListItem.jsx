@@ -9,17 +9,12 @@ const CryptoListItem = ({ name, imageUrl, price }) => {
   return (
     <>
       <CardPrimary className={classes["crypto-item-card"]}>
-        <div className={classes["crypto-item-header"]}>
+        <div className={classes["crypto-item-image"]}>
+          <img src={imageUrl} alt="Crypto coin image" />
+        </div>
+        <div className={classes["crypto-item-content"]}>
           <h3>{name}</h3>
-        </div>
-        <div className={classes["crypto-item-body"]}>
-          <img
-            src="https://st3.depositphotos.com/1311476/17107/i/450/depositphotos_171075154-stock-photo-golden-bitcoin-souvenir-coin.jpg"
-            alt=""
-          />
-        </div>
-        <div className={classes["crypto-item-footer"]}>
-          <h3>{price}</h3>
+          <p>{`$${price}`}</p>
         </div>
       </CardPrimary>
     </>

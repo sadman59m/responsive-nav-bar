@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import classes from "./CryptoMain.module.css";
 import CryptoList from "./CryptoList";
-import Pagination from "../pagination/Pagination";
+import ErrorMessage from "../UI/ErrorMessage";
 
 const CryptoMain = () => {
   const [cryptoCoinData, setCryptoCoinData] = useState([]);
@@ -16,7 +16,7 @@ const CryptoMain = () => {
         setIsError(false);
         setIsLoading(true);
         const response = await fetch(
-          "https://apiii.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
+          "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
         );
         const cryptoCoinData = await response.json();
         setCryptoCoinData(cryptoCoinData);
@@ -28,26 +28,26 @@ const CryptoMain = () => {
     })();
   }, []);
 
-  console.log(cryptoCoinData);
+  // console.log(cryptoCoinData);
 
-  const errorContent = <h3>Something went wrong! Try again later.</h3>;
+  const errorContent = "Something went wrong! Try again later.";
   const loadingContent = <h3>Loading...</h3>;
   return (
     <>
       <section className={classes["crypto-section"]}>
-        <div className={classes["error-content"]}>
-          {!isLoading && !isError && errorContent}
+        {!isLoading && isError && <ErrorMessage message={errorContent} />}
+        <div className={classes["laoding-content"]}>
+          {!isError && isLoading && loadingContent}
         </div>
         <div className={classes["laoding-content"]}>
-          {!isError && !isLoading && loadingContent}
-        </div>
-        <div>
-          {isError && !isLoading && (
-            <CryptoList cryptoCoinData={cryptoCoinData} />
+          {!isError && !isLoading && cryptoCoinData.length === 0 && (
+            <h3>No Crypto Coin Info Available Righ Now.</h3>
           )}
         </div>
-        <div className={classes["crypto-pagination"]}>
-          <Pagination totalItems={22} itemPerPage={4} currentPage="1" />
+        <div>
+          {!isError && !isLoading && cryptoCoinData.length > 0 && (
+            <CryptoList cryptoCoinData={cryptoCoinData} />
+          )}
         </div>
       </section>
     </>

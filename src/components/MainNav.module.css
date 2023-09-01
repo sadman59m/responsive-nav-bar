@@ -97,15 +97,15 @@ nav a:hover::before {
     transform: translateX(150vw) translateY(-150vh);
   }
 
+  nav a {
+    margin: 0.8rem 0;
+    font-size: 1.5rem;
+  }
+
   header.responsive-nav nav {
     /* display: flex; */
     opacity: 1;
     transform: none;
     /* display: flex; */
-  }
-
-  nav a {
-    margin: 0.8rem 0;
-    font-size: 1.5rem;
   }
 }
