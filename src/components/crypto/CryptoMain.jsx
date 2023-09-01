@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 import classes from "./CryptoMain.module.css";
 import CryptoList from "./CryptoList";
+import Pagination from "../pagination/Pagination";
 
 const CryptoMain = () => {
   const [cryptoCoinData, setCryptoCoinData] = useState([]);
@@ -44,6 +45,9 @@ const CryptoMain = () => {
           {isError && !isLoading && (
             <CryptoList cryptoCoinData={cryptoCoinData} />
           )}
+        </div>
+        <div className={classes["crypto-pagination"]}>
+          <Pagination totalItems={22} itemPerPage={4} currentPage="1" />
         </div>
       </section>
     </>

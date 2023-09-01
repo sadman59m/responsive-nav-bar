@@ -1,0 +1,20 @@
+.pagination {
+  width: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.pagination button {
+  background-color: transparent;
+  color: orangered;
+  border: 1px solid orangered;
+  width: 2rem;
+  height: 2rem;
+}
+
+.pagination button.active,
+.pagination button:hover {
+  color: #fff;
+  background: orangered;
+}
