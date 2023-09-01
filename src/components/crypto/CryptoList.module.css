@@ -1,0 +1,31 @@
+.crypto-list-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.crypto-list-header {
+  margin: 1rem auto;
+  margin-bottom: 1.5rem;
+}
+
+.crypto-list-header h1 {
+  font-size: 2rem;
+  margin: 0;
+  color: #333;
+  text-shadow: 2px 2px 3px rgba(255, 69, 0, 0.7);
+}
+
+.crypto-list-item-body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media (max-width: 580px) {
+  .crypto-list-item-body {
+    flex-direction: column;
+    align-items: center;
+  }
+}
