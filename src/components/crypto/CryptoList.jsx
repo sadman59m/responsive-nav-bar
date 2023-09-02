@@ -8,7 +8,7 @@ import { useState } from "react";
 
 const CryptoList = ({ cryptoCoinData }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemPerPage, setItemPerPage] = useState(8);
+  const [itemPerPage, setItemPerPage] = useState(4);
 
   // ex: currPage = 2, itemPerPage = 10
   // lastIndex = 2 * 10 = 20
