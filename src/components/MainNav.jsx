@@ -4,44 +4,74 @@ import NavButton from "./UI/NavButton";
 
 import classes from "./MainNav.module.css";
 
-const MainNav = () => {
-  const [isShown, setIsShown] = useState(false);
-
-  const navShownHandler = () => {
-    setIsShown((prevState) => !prevState);
-  };
-
-  const navShowClass = isShown ? classes["responsive-nav"] : "";
-
+const Links = () => {
   return (
     <>
-      <header className={navShowClass}>
-        <h3>MyCryptos</h3>
-        <nav>
-          <a href="https://academy.vivasoftltd.com/javascript-bootcamp">
-            Javascript Bootcamp
-          </a>
-          <a href="https://academy.vivasoftltd.com/typescript-bootcamp">
-            Typescript Bootcamp
-          </a>
-          <a href="https://academy.vivasoftltd.com/python-bootcamp">
-            Python Bootcamp
-          </a>
-          <NavButton
-            className={classes["nav-btn-close"]}
-            onClick={navShownHandler}
-          >
-            <FaTimes />
-          </NavButton>
-        </nav>
-        <NavButton
-          className={classes["nav-btn-open"]}
-          onClick={navShownHandler}
-        >
-          <FaBars />
-        </NavButton>
-      </header>
+      <p>
+        <a href="#home">home</a>
+      </p>
+      <p>
+        <a href="#about">about</a>
+      </p>
+      <p>
+        <a href="#contact">contact</a>
+      </p>
     </>
+  );
+};
+
+const MainNav = () => {
+  const [navToogle, setNavToogle] = useState(false);
+
+  // const navShowClass = navToogle ? classes["responsive-nav"] : "";
+
+  return (
+    <div className={classes["navbar"]}>
+      <div className={classes["navbar-links"]}>
+        <div className={classes["navbar-link_logo"]}>
+          <p>
+            <a href="#home">LOGO</a>
+          </p>
+        </div>
+        <div className={classes["navbar-links_container"]}>
+          <Links />
+        </div>
+      </div>
+      <div className={classes["navbar-signs"]}>
+        <p>
+          <a href="#sing">sign in</a>
+        </p>
+        <button>sign up</button>
+      </div>
+      <div className={classes["navbar-menu"]}>
+        {navToogle ? (
+          <FaTimes
+            className={classes["navbar-menu_icon"]}
+            onClick={() => {
+              setNavToogle(false);
+            }}
+          />
+        ) : (
+          <FaBars
+            className={classes["navbar-menu_icon"]}
+            onClick={() => setNavToogle(true)}
+          />
+        )}
+        {navToogle && (
+          <div className={classes["navbar-menu_containers"]}>
+            <div className={classes["navbar-menu_container-links"]}>
+              <Links />
+            </div>
+            <div className={classes["navbar-menu_container-signs"]}>
+              <p>
+                <a href="#sing">sign in</a>
+              </p>
+              <button>sign up</button>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
   );
 };
 
